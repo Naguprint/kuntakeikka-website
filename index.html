@@ -1,0 +1,848 @@
+<title>Kuntakeikka — Vikarier när kommunen behöver</title>
+<style>
+html { color-scheme: light; }
+
+:root {
+  color-scheme: light;
+  --navy:    #1B2F6E;
+  --teal:    #2AB5A0;
+  --blue:    #2A7FC9;
+  --ink:     #1B2F6E;
+  --ink2:    #3A4F7A;
+  --muted:   #6B7FA8;
+  --bg:      #ffffff;
+  --bg2:     #F6F8FC;
+  --bg3:     #EEF2FA;
+  --border:  #D8E0F0;
+  --teal-bg: #EAF8F5;
+  --blue-bg: #EAF3FB;
+}
+
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Nav */
+nav {
+  position:sticky; top:0; z-index:50;
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 clamp(1.5rem,5vw,4rem);
+  height:72px;
+}
+.nav-logo img { height:44px; width:auto; display:block; }
+.nav-right { display:flex; align-items:center; gap:1.5rem; }
+.nav-link {
+  color:var(--muted); text-decoration:none;
+  font-size:0.88rem; font-weight:500; transition:color 0.15s;
+}
+.nav-link:hover { color:var(--navy); }
+.lang-toggle { display:flex; gap:0.25rem; }
+.lang-btn {
+  background:transparent; border:1px solid var(--border);
+  color:var(--muted); font-size:0.78rem; font-weight:700;
+  padding:0.25rem 0.6rem; border-radius:4px; cursor:pointer;
+  font-family:inherit; transition:all 0.15s; letter-spacing:0.04em;
+}
+.lang-btn:hover { border-color:var(--navy); color:var(--navy); }
+.lang-btn.active { background:var(--navy); color:#fff; border-color:var(--navy); }
+.nav-cta {
+  background:var(--teal); color:#fff; text-decoration:none;
+  padding:0.5rem 1.25rem; border-radius:5px;
+  font-size:0.88rem; font-weight:700; transition:background 0.15s;
+}
+.nav-cta:hover { background:#1D9A87; }
+
+/* Hero */
+.hero {
+  padding:clamp(2rem,4vw,3rem) clamp(1.5rem,5vw,4rem) clamp(3rem,6vw,5rem);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+}
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr; gap:3rem;}
+  .hero-visual{display:none;}
+}
+.hero-logo { margin-bottom:1.5rem; margin-left:-25px; }
+.hero-logo img { height:60px; width:auto; }
+.hero h1 {
+  font-size:clamp(2.2rem,4.5vw,3.4rem);
+  font-weight:800;
+  line-height:1.08;
+  letter-spacing:-0.03em;
+  color:var(--navy);
+  text-wrap:balance;
+  margin-bottom:1.25rem;
+}
+.hero h1 span { color:var(--teal); }
+.hero-sub {
+  font-size:1rem; color:var(--muted);
+  letter-spacing:0.02em;
+  margin-bottom:1.75rem;
+  font-weight:400;
+}
+.hero-lead {
+  font-size:1.08rem; color:var(--ink2);
+  line-height:1.7; max-width:48ch;
+  margin-bottom:2.25rem;
+}
+.hero-actions { display:flex; gap:0.9rem; flex-wrap:wrap; align-items:center; }
+.btn-primary {
+  background:var(--teal); color:#fff; text-decoration:none;
+  padding:0.85rem 2rem; border-radius:5px;
+  font-weight:700; font-size:0.98rem; display:inline-block;
+  transition:background 0.15s;
+}
+.btn-primary:hover { background:#1D9A87; }
+.btn-demo {
+  background: transparent;
+  border: 2px solid var(--teal);
+  color: var(--teal);
+  text-decoration: none;
+  padding: 0.83rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  display: inline-block;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-demo:hover { background: var(--teal); color: #fff; }
+
+.btn-secondary {
+  color:var(--navy); text-decoration:none;
+  font-weight:600; font-size:0.95rem;
+  border-bottom:2px solid var(--teal);
+  padding-bottom:1px;
+  transition:color 0.15s;
+}
+.btn-secondary:hover { color:var(--teal); }
+
+/* Hero visual — CSS mockup */
+.hero-visual { position:relative; }
+.mockup-frame {
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  box-shadow:0 8px 40px rgba(27,47,110,0.10), 0 2px 8px rgba(27,47,110,0.06);
+  overflow:hidden;
+}
+.mockup-bar {
+  background:var(--bg2); padding:0.65rem 1rem;
+  display:flex; align-items:center; gap:0.5rem;
+  border-bottom:1px solid var(--border);
+}
+.mockup-dot { width:9px; height:9px; border-radius:50%; }
+.mockup-dot:nth-child(1){background:#FC5F56;}
+.mockup-dot:nth-child(2){background:#FDBD2E;}
+.mockup-dot:nth-child(3){background:#2AC340;}
+.mockup-url {
+  flex:1; background:#fff; border:1px solid var(--border);
+  border-radius:4px; padding:0.2rem 0.7rem;
+  font-size:0.72rem; color:var(--muted); margin-left:0.4rem;
+  font-family:'Segoe UI',system-ui,sans-serif;
+}
+.mockup-content { padding:1.25rem; display:flex; gap:0.75rem; }
+.mockup-sidebar {
+  width:80px; flex-shrink:0; background:var(--navy);
+  border-radius:6px; padding:0.75rem 0.6rem;
+  display:flex; flex-direction:column; gap:0.4rem;
+}
+.mockup-sidebar-title {
+  font-size:0.46rem; font-weight:700; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--teal);
+  padding:0 0.25rem; margin-bottom:0.3rem;
+}
+.m-nav { height:6px; border-radius:3px; background:rgba(255,255,255,0.12); }
+.m-nav.active { background:var(--teal); width:70%; }
+.mockup-main { flex:1; display:flex; flex-direction:column; gap:0.5rem; }
+.m-card {
+  background:#fff; border:1px solid var(--border);
+  border-radius:6px; padding:0.75rem;
+}
+.m-card-head {
+  font-size:0.58rem; font-weight:700; color:var(--navy);
+  margin-bottom:0.5rem; padding-bottom:0.4rem;
+  border-bottom:1px solid var(--border);
+  display:flex; gap:0.3rem; align-items:center;
+}
+.m-step { color:var(--teal); font-size:0.5rem; font-weight:800; }
+.m-row { display:grid; grid-template-columns:1fr 1fr; gap:0.3rem; margin-bottom:0.3rem; }
+.m-field {
+  height:18px; background:var(--bg2); border:1px solid var(--border);
+  border-radius:3px; position:relative; overflow:hidden;
+}
+.m-fill {
+  position:absolute; left:0; top:0; bottom:0;
+  background:linear-gradient(90deg,#d4e5f5,#c2d8ef);
+  border-radius:2px;
+}
+.m-label { font-size:0.42rem; color:var(--muted); margin-bottom:0.15rem; }
+.m-chips { display:flex; gap:0.2rem; flex-wrap:wrap; margin-top:0.25rem; }
+.m-chip {
+  height:10px; border-radius:3px;
+  background:var(--teal-bg); border:1px solid #A8E0D8; width:28px;
+}
+.m-chip.on { background:var(--teal); border-color:var(--teal); }
+.m-btn { width:100%; height:16px; background:var(--teal); border-radius:3px; margin-top:0.4rem; }
+
+/* Section wrapper */
+.section { padding:clamp(3.5rem,7vw,5.5rem) clamp(1.5rem,5vw,4rem); }
+.section + .section { border-top:1px solid var(--border); }
+.section-label {
+  font-size:0.72rem; font-weight:700; letter-spacing:0.14em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:0.75rem;
+}
+.section-heading {
+  font-size:clamp(1.6rem,3vw,2.3rem); font-weight:800;
+  letter-spacing:-0.025em; line-height:1.12; color:var(--navy);
+  text-wrap:balance; margin-bottom:1rem;
+}
+.section-lead {
+  font-size:1.05rem; color:var(--ink2); line-height:1.7;
+  max-width:54ch; margin-bottom:2.5rem;
+}
+
+/* Features */
+.features-bg { background:var(--bg2); }
+.features-grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1px; background:var(--border);
+  border:1px solid var(--border); border-radius:10px; overflow:hidden;
+}
+.feature-card {
+  background:var(--bg2); padding:1.75rem;
+}
+.feature-num {
+  font-size:0.72rem; font-weight:800; letter-spacing:0.06em;
+  color:var(--teal); margin-bottom:0.9rem;
+  font-variant-numeric:tabular-nums;
+}
+.feature-card h3 {
+  font-size:1rem; font-weight:700; color:var(--navy);
+  margin-bottom:0.5rem; letter-spacing:-0.01em;
+}
+.feature-card p { font-size:0.9rem; color:var(--ink2); line-height:1.65; }
+
+/* Process */
+.process-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:2.5rem; margin-top:2.5rem;
+}
+@media(max-width:720px){ .process-grid{grid-template-columns:1fr; gap:2rem;} }
+.process-step { position:relative; }
+.process-step::before {
+  content:'';
+  position:absolute; top:20px; left:40px; right:-2.5rem;
+  height:1px; background:var(--border);
+}
+.process-step:last-child::before { display:none; }
+.step-num {
+  width:40px; height:40px; border-radius:50%;
+  background:var(--navy); color:#fff;
+  font-weight:800; font-size:0.95rem;
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:1.1rem; position:relative; z-index:1;
+  letter-spacing:-0.02em;
+}
+.process-step h3 {
+  font-size:1rem; font-weight:700; color:var(--navy);
+  margin-bottom:0.5rem; letter-spacing:-0.01em;
+}
+.process-step p { font-size:0.9rem; color:var(--ink2); line-height:1.65; max-width:26ch; }
+code {
+  font-family:'Consolas','SF Mono',monospace;
+  font-size:0.82em; background:var(--bg3);
+  color:var(--navy); padding:0.1em 0.4em; border-radius:3px;
+}
+
+/* Subdomain section */
+.subdomain-section { background:var(--navy); color:#fff; }
+.subdomain-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:4rem; align-items:center;
+}
+@media(max-width:720px){ .subdomain-grid{grid-template-columns:1fr; gap:2.5rem;} }
+.subdomain-section .section-heading { color:#fff; }
+.subdomain-section .section-lead { color:rgba(255,255,255,0.68); margin-bottom:0; }
+.subdomain-section .section-label { color:var(--teal); }
+.url-list { display:flex; flex-direction:column; gap:0.6rem; margin-top:2rem; }
+.url-item {
+  display:flex; align-items:center; gap:0.75rem;
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+  border-radius:6px; padding:0.8rem 1.1rem;
+}
+.url-code {
+  font-family:'Consolas','SF Mono',monospace;
+  font-size:0.9rem; color:#fff; flex:1;
+}
+.url-code .t { color:var(--teal); }
+.url-tag {
+  font-size:0.68rem; font-weight:700; letter-spacing:0.06em;
+  text-transform:uppercase; padding:0.2rem 0.55rem; border-radius:3px;
+}
+.url-tag.active { background:rgba(42,181,160,0.2); color:var(--teal); }
+.url-tag.possible { background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.35); }
+.subdomain-illustration {
+  display:flex; flex-direction:column; gap:0.75rem;
+}
+.sdi-card {
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+  border-radius:8px; padding:1.25rem 1.5rem;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.sdi-name { font-weight:700; font-size:0.95rem; color:#fff; }
+.sdi-url { font-size:0.78rem; color:rgba(255,255,255,0.45); margin-top:0.15rem; font-family:'Consolas','SF Mono',monospace; }
+.sdi-dot {
+  width:8px; height:8px; border-radius:50%; flex-shrink:0;
+}
+.sdi-dot.live { background:var(--teal); }
+.sdi-dot.future { background:rgba(255,255,255,0.2); }
+
+/* Pricing */
+.pricing-cards {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+  gap:1.25rem; margin-top:2.5rem;
+}
+.pricing-card {
+  background:var(--bg2); border:1px solid var(--border);
+  border-radius:10px; padding:1.75rem; position:relative;
+}
+.pricing-card.featured {
+  background:var(--navy); border-color:var(--navy);
+  box-shadow:0 8px 32px rgba(27,47,110,0.18);
+}
+.pricing-tier {
+  font-size:0.72rem; font-weight:700; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:0.75rem;
+}
+.pricing-card.featured .pricing-tier { color:var(--teal); }
+.pricing-price {
+  font-size:2.1rem; font-weight:800; letter-spacing:-0.03em;
+  color:var(--navy); line-height:1; margin-bottom:0.35rem;
+  font-variant-numeric:tabular-nums;
+}
+.pricing-card.featured .pricing-price { color:#fff; }
+.pricing-price sub { font-size:0.85rem; font-weight:400; letter-spacing:0; vertical-align:baseline; }
+.pricing-desc { font-size:0.88rem; color:var(--ink2); margin-bottom:1.5rem; line-height:1.55; }
+.pricing-card.featured .pricing-desc { color:rgba(255,255,255,0.6); }
+.pricing-feats { list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
+.pricing-feats li {
+  font-size:0.88rem; color:var(--ink2);
+  display:flex; gap:0.55rem; align-items:flex-start;
+}
+.pricing-card.featured .pricing-feats li { color:rgba(255,255,255,0.75); }
+.pricing-check {
+  width:16px; height:16px; border-radius:50%;
+  background:var(--teal-bg); color:var(--teal);
+  font-size:0.6rem; font-weight:800;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; margin-top:2px;
+}
+.pricing-card.featured .pricing-check {
+  background:rgba(42,181,160,0.2);
+}
+
+/* Contact */
+.contact-section { background:var(--bg2); }
+.contact-inner {
+  display:grid; grid-template-columns:1fr 1.3fr;
+  gap:4rem; align-items:start;
+}
+@media(max-width:800px){ .contact-inner{grid-template-columns:1fr; gap:2.5rem;} }
+.contact-copy .section-lead { margin-bottom:1.5rem; max-width:100%; }
+.contact-detail {
+  display:flex; align-items:center; gap:0.6rem;
+  font-size:0.9rem; color:var(--ink2); margin-bottom:0.5rem;
+}
+.contact-detail a { color:var(--teal); text-decoration:none; font-weight:500; }
+.contact-detail a:hover { text-decoration:underline; }
+.contact-detail-label {
+  font-size:0.72rem; font-weight:700; letter-spacing:0.08em;
+  text-transform:uppercase; color:var(--muted);
+  min-width:60px;
+}
+.contact-form-wrap {
+  background:var(--bg); border:1px solid var(--border);
+  border-radius:10px; padding:2rem;
+  box-shadow:0 2px 16px rgba(27,47,110,0.06);
+}
+.contact-form { display:flex; flex-direction:column; gap:1rem; }
+.cf-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+@media(max-width:500px){ .cf-row{grid-template-columns:1fr;} }
+.cf-field { display:flex; flex-direction:column; gap:0.3rem; }
+.cf-field label {
+  font-size:0.82rem; font-weight:600; color:var(--navy); letter-spacing:0.01em;
+}
+.cf-field input,.cf-field select,.cf-field textarea {
+  padding:0.6rem 0.85rem; border:1px solid var(--border);
+  border-radius:5px; font-size:0.92rem; font-family:inherit;
+  background:var(--bg2); color:var(--ink); transition:border-color 0.15s,box-shadow 0.15s; width:100%;
+}
+.cf-field input:focus,.cf-field select:focus,.cf-field textarea:focus {
+  outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(42,181,160,0.14);
+}
+.cf-field textarea { resize:vertical; min-height:80px; }
+.cf-submit {
+  width:100%; background:var(--navy); color:#fff; border:none;
+  border-radius:5px; padding:0.9rem; font-size:0.95rem; font-weight:700;
+  font-family:inherit; cursor:pointer; transition:background 0.15s;
+  letter-spacing:0.01em;
+}
+.cf-submit:hover { background:var(--teal); }
+.cf-submit:disabled { opacity:0.6; cursor:not-allowed; }
+.cf-note { font-size:0.78rem; color:var(--muted); text-align:center; line-height:1.5; }
+.cf-feedback {
+  padding:0.75rem 1rem; border-radius:5px;
+  font-size:0.88rem; font-weight:500; text-align:center;
+}
+.cf-feedback.success { background:#EAF8F5; color:#166B5A; border:1px solid #A8E0D0; }
+.cf-feedback.error { background:#FDE8EA; color:#B8202E; border:1px solid #F5B8BC; }
+
+/* Footer */
+footer {
+  background:var(--bg); border-top:1px solid var(--border);
+  padding:2rem clamp(1.5rem,5vw,4rem);
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1.25rem;
+}
+.footer-logo img { height:28px; width:auto; opacity:0.75; }
+.footer-links { display:flex; gap:1.5rem; flex-wrap:wrap; }
+.footer-links a { color:var(--muted); text-decoration:none; font-size:0.83rem; transition:color 0.15s; }
+.footer-links a:hover { color:var(--navy); }
+.footer-copy { font-size:0.78rem; color:var(--muted); width:100%; }
+</style>
+
+<!-- Nav -->
+<nav>
+  <a href="#" style="text-decoration:none">
+    <img id="nav-logo" src="" alt="Kuntakeikka" style="height:63px;width:auto;display:block" />
+  </a>
+  <div class="nav-right">
+    <a class="nav-link" href="#hur-det-fungerar" data-sv="Hur det fungerar" data-fi="Miten se toimii"></a>
+    <a class="nav-link" href="#priser" data-sv="Priser" data-fi="Hinnat"></a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('sv')">SV</button>
+      <button class="lang-btn" onclick="setLang('fi')">FI</button>
+    </div>
+    <a class="nav-cta" href="#kontakt" data-sv="Kontakta oss" data-fi="Ota yhteyttä"></a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-copy">
+    <div class="hero-logo">
+      <img id="hero-logo" src="" alt="Kuntakeikka" style="height:180px;width:auto" />
+    </div>
+    <h1 data-sv="Vikariepooln som<br><span>en färdig tjänst</span>" data-fi="Sijaispooli<br><span>palveluna</span>"></h1>
+    <p class="hero-sub" data-sv="Sijaisia, kunta tarvitsee" data-fi="Sijaisia, kunta tarvitsee"></p>
+    <p class="hero-lead" data-sv="Er stad får en egen portal där vikarierna registrerar sig, uppdaterar sin tillgänglighet och hanterar sitt konto — utan installation, utan IT-projekt." data-fi="Kuntanne saa oman portaalin, jossa sijaiset rekisteröityvät, päivittävät saatavuutensa ja hallinnoivat tiliään — ilman asennusta, ilman IT-projektia."></p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#kontakt" data-sv="Boka en demo" data-fi="Varaa esittely"></a>
+      <a class="btn-demo" href="https://pargas.kuntakeikka.fi" target="_blank" rel="noopener" data-sv="Se live-demo →" data-fi="Katso live-demo →"></a>
+      <a class="btn-secondary" href="#hur-det-fungerar" data-sv="Hur det fungerar" data-fi="Miten se toimii"></a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="mockup-frame">
+      <div class="mockup-bar">
+        <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+        <div class="mockup-url" id="m-url">er-stad.kuntakeikka.fi</div>
+      </div>
+      <div class="mockup-content">
+        <div class="mockup-sidebar">
+          <div class="mockup-sidebar-title" id="m-pool-title">Vikariepoolen</div>
+          <div class="m-nav active"></div>
+          <div class="m-nav" style="width:85%"></div>
+          <div class="m-nav" style="width:60%"></div>
+          <div class="m-nav" style="width:75%"></div>
+        </div>
+        <div class="mockup-main">
+          <div class="m-card">
+            <div class="m-card-head"><span class="m-step">01</span><span id="m-l1">Personuppgifter</span></div>
+            <div class="m-row">
+              <div><div class="m-label" id="m-fn">Förnamn</div><div class="m-field"><div class="m-fill" style="width:75%"></div></div></div>
+              <div><div class="m-label" id="m-ln">Efternamn</div><div class="m-field"><div class="m-fill" style="width:60%"></div></div></div>
+            </div>
+            <div class="m-label" id="m-em" style="margin-top:0.3rem">E-post</div>
+            <div class="m-field"><div class="m-fill" style="width:85%"></div></div>
+          </div>
+          <div class="m-card">
+            <div class="m-card-head"><span class="m-step">02</span><span id="m-l2">Tillgänglighet</span></div>
+            <div class="m-chips">
+              <div class="m-chip on"></div><div class="m-chip"></div>
+              <div class="m-chip on"></div><div class="m-chip"></div>
+              <div class="m-chip on"></div><div class="m-chip"></div>
+            </div>
+            <div class="m-btn"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="section features-bg">
+  <div class="section-label" data-sv="Vad ingår" data-fi="Mitä sisältyy"></div>
+  <h2 class="section-heading" data-sv="Allt en vikariepoolsportal behöver" data-fi="Kaikki mitä sijaispooli tarvitsee"></h2>
+  <p class="section-lead" data-sv="Från vikarieregistrering till administratörspanel — tvåspråkigt, driftsatt och klart att använda från dag ett." data-fi="Sijaisten rekisteröinnistä hallintapaneeliin — kaksikielisenä, käyttöönottovalmiina alusta alkaen."></p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-num">01</div>
+      <h3 data-sv="Registreringsformulär" data-fi="Rekisteröintilomake"></h3>
+      <p data-sv="Vikarierna anger utbildning, tillgänglighet och språkkunskaper och ger GDPR-samtycke. Formuläret finns på svenska och finska." data-fi="Sijaiset ilmoittavat koulutuksensa, saatavuutensa ja kielitaitonsa ja antavat GDPR-suostumuksensa. Lomake on ruotsiksi ja suomeksi."></p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">02</div>
+      <h3 data-sv="Självbetjäning" data-fi="Itsepalvelu"></h3>
+      <p data-sv="Vikarierna loggar in, uppdaterar sin tillgänglighet och byter lösenord på egen hand — utan att belasta er HR-avdelning." data-fi="Sijaiset kirjautuvat sisään, päivittävät saatavuutensa ja vaihtavat salasanansa itse — ilman HR-osaston kuormittamista."></p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">03</div>
+      <h3 data-sv="Administratörspanel" data-fi="Hallintapaneeli"></h3>
+      <p data-sv="Filtrera, sök och exportera sökande. Visa tillgänglighet per dag, yrke och kompetens direkt i webbläsaren." data-fi="Suodata, hae ja vie hakijat. Näytä saatavuus päivittäin, ammatin ja osaamisen mukaan suoraan selaimessa."></p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">04</div>
+      <h3 data-sv="Säkerhet och GDPR" data-fi="Tietoturva ja GDPR"></h3>
+      <p data-sv="Lösenord krypteras med scrypt. Data lagras i EU. GDPR-information på båda språken ingår i formuläret." data-fi="Salasanat salataan scrypt-algoritmilla. Data tallennetaan EU:ssa. GDPR-tiedot molemmilla kielillä sisältyvät lomakkeeseen."></p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">05</div>
+      <h3 data-sv="Tvåspråkig" data-fi="Kaksikielinen"></h3>
+      <p data-sv="Svenska och finska i hela gränssnittet. Besökaren väljer språk — formulär, bekräftelsemail och självbetjäningsportal." data-fi="Ruotsi ja suomi koko käyttöliittymässä. Käyttäjä valitsee kielen — lomake, vahvistussähköposti ja itsepalveluportaali."></p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">06</div>
+      <h3 data-sv="Ingen installation" data-fi="Ei asennusta"></h3>
+      <p data-sv="Vi sätter upp er.kuntakeikka.fi och driftsätter. Ni behöver bara registrera en CNAME om ni vill ha egen domän." data-fi="Me perustamme kuntanne.kuntakeikka.fi ja käyttöönotamme. Tarvitsette vain CNAME-merkinnän, jos haluatte oman domainin."></p>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="section" id="hur-det-fungerar">
+  <div class="section-label" data-sv="Processen" data-fi="Prosessi"></div>
+  <h2 class="section-heading" data-sv="Från avtal till live-portal" data-fi="Sopimuksesta live-portaaliin"></h2>
+  <p class="section-lead" data-sv="Vi hanterar det tekniska. Ni fokuserar på att rekrytera vikarier." data-fi="Me hoidamme tekniikan. Te keskitytte sijaisten rekrytointiin."></p>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <h3 data-sv="Ni kontaktar oss" data-fi="Otatte meihin yhteyttä"></h3>
+      <p data-sv="Vi bokar ett kortare samtal, bekräftar era önskemål — logotyp, färger, kontaktpersoner — och skickar ett avtal." data-fi="Sovimme lyhyen puhelun, vahvistamme toiveenne — logo, värit, yhteyshenkilöt — ja lähetämme sopimuksen."></p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <h3 data-sv="Vi driftsätter er portal" data-fi="Käyttöönotamme portaalinne"></h3>
+      <p data-sv="er-stad.kuntakeikka.fi är klar inom en arbetsdag, konfigurerad med er branding och era kontaktuppgifter." data-fi="kuntanne.kuntakeikka.fi on valmis vuorokaudessa, konfiguroitu brändillänne ja yhteystiedoillanne."></p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <h3 data-sv="Vikarierna registrerar sig" data-fi="Sijaiset rekisteröityvät"></h3>
+      <p data-sv="Ni kommunicerar portaladressen. Era admins loggar in och börjar filtrera och kontakta sökande." data-fi="Te tiedotatte portaaliosoitteen. Adminne kirjautuvat sisään ja alkavat suodattaa ja ottaa yhteyttä hakijoihin."></p>
+    </div>
+  </div>
+</section>
+
+<!-- Subdomain -->
+<section class="section subdomain-section">
+  <div class="subdomain-grid">
+    <div>
+      <div class="section-label" data-sv="Er egen portal" data-fi="Oma portaali"></div>
+      <h2 class="section-heading" data-sv="Varje stad har sin subdomain — ingen data blandas" data-fi="Jokaisella kaupungilla oma subdomain — tiedot pysyvät erillään"></h2>
+      <p class="section-lead" data-sv="Er portal är er. Egna URL:er, er logotyp och era färger. Vikariedata tillhör er och delas aldrig med andra kommuner. Vill ni ha en helt egen adress går det att peka er befintliga domän hit via CNAME." data-fi="Portaalisi on omasi. Omat URL:t, oma logonne ja teidän värinne. Sijaistiedot kuuluvat teille eikä niitä koskaan jaeta muiden kuntien kanssa. Jos haluatte täysin oman osoitteen, nykyinen domainne voidaan ohjata tänne CNAME-merkinnällä."></p>
+      <div class="url-list">
+        <div class="url-item">
+          <div class="url-code"><span class="t">er-stad</span>.kuntakeikka.fi</div>
+          <div class="url-tag active" data-sv="Standardadress" data-fi="Vakio-osoite"></div>
+        </div>
+        <div class="url-item">
+          <div class="url-code"><span style="color:rgba(255,255,255,0.4)">vikariat</span>.er-stad.fi <span style="color:rgba(255,255,255,0.28);font-size:0.8em">— CNAME</span></div>
+          <div class="url-tag possible" data-sv="Möjligt" data-fi="Mahdollista"></div>
+        </div>
+      </div>
+    </div>
+    <div class="subdomain-illustration">
+      <div class="sdi-card">
+        <div>
+          <div class="sdi-name" data-sv="Er stad" data-fi="Kuntanne"></div>
+          <div class="sdi-url">er-stad.kuntakeikka.fi</div>
+        </div>
+        <div class="sdi-dot live"></div>
+      </div>
+      <div class="sdi-card" style="opacity:0.45">
+        <div>
+          <div class="sdi-name" data-sv="Nästa kund" data-fi="Seuraava asiakas"></div>
+          <div class="sdi-url">annan-stad.kuntakeikka.fi</div>
+        </div>
+        <div class="sdi-dot future"></div>
+      </div>
+      <div class="sdi-card" style="opacity:0.2">
+        <div>
+          <div class="sdi-name" data-sv="Och ytterligare en" data-fi="Ja yksi lisää"></div>
+          <div class="sdi-url">tredje-stad.kuntakeikka.fi</div>
+        </div>
+        <div class="sdi-dot future"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="section" id="priser">
+  <div class="section-label" data-sv="Priser" data-fi="Hinnat"></div>
+  <h2 class="section-heading" data-sv="Transparent prissättning" data-fi="Läpinäkyvä hinnoittelu"></h2>
+  <p class="section-lead" data-sv="Fast månadsavgift, inga per-användare-avgifter. Ni betalar för infrastruktur och support — inte för antalet vikarier som registrerar sig." data-fi="Kiinteä kuukausimaksu, ei käyttäjäkohtaisia maksuja. Maksatte infrastruktuurista ja tuesta — ei sijaisten määrästä."></p>
+  <div class="pricing-cards">
+    <div class="pricing-card">
+      <div class="pricing-tier">Starter</div>
+      <div class="pricing-price">€99<sub>/mån</sub></div>
+      <p class="pricing-desc" data-sv="För kommuner som vill komma igång snabbt." data-fi="Kunnille, jotka haluavat päästä nopeasti alkuun."></p>
+      <ul class="pricing-feats">
+        <li><span class="pricing-check">✓</span><span data-sv="Portal på er-stad.kuntakeikka.fi" data-fi="Portaali kuntanne.kuntakeikka.fi-alustalla"></span></li>
+        <li><span class="pricing-check">✓</span><span data-sv="Obegränsade vikarieregistreringar" data-fi="Rajattomat sijaisten rekisteröinnit"></span></li>
+        <li><span class="pricing-check">✓</span><span data-sv="Administratörspanel" data-fi="Hallintapaneeli"></span></li>
+        <li><span class="pricing-check">✓</span><span data-sv="Tvåspråkigt gränssnitt (sv/fi)" data-fi="Kaksikielinen käyttöliittymä (sv/fi)"></span></li>
+        <li><span class="pricing-check">✓</span><span data-sv="E-postsupport" data-fi="Sähköpostituki"></span></li>
+      </ul>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-tier">Standard</div>
+      <div class="pricing-price">€199<sub>/mån</sub></div>
+      <p class="pricing-desc" data-sv="Mest populärt — allt ni behöver inklusive egen domän." data-fi="Suosituin — kaikki mitä tarvitsette, mukaan lukien oma domain."></p>
+      <ul class="pricing-feats">
+        <li><span class="pricing-check">✓</span><span data-sv="Allt i Starter" data-fi="Kaikki Starterista"></span></li>
+        <li><span class="pricing-check">✓</span><span data-sv="Egen domän via CNAME" data-fi="Oma domain CNAME:n kautta"></span></li>
+        <li><span class="pricing-check">✓</span><span data-sv="Anpassad branding och färger" data-fi="Mukautettu brändäys ja värit"></span></li>
+        <li><span class="pricing-check">✓</span><span data-sv="Glömt lösenord — e-postutskick" data-fi="Salasanan palautus — sähköpostilähetykset"></span></li>
+        <li><span class="pricing-check">✓</span><span data-sv="Prioritetssupport" data-fi="Prioriteettituki"></span></li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-tier">Enterprise</div>
+      <div class="pricing-price" style="font-size:1.5rem" data-sv="Offert" data-fi="Tarjous"></div>
+      <p class="pricing-desc" data-sv="Flera kommuner, samkommuner eller anpassade integrationer." data-fi="Useita kuntia, kuntayhtymät tai mukautetut integraatiot."></p>
+      <ul class="pricing-feats">
+        <li><span class="pricing-check">✓</span><span data-sv="Allt i Standard" data-fi="Kaikki Standardista"></span></li>
+        <li><span class="pricing-check">✓</span><span data-sv="Flera instanser under ett avtal" data-fi="Useita instansseja yhdellä sopimuksella"></span></li>
+        <li><span class="pricing-check">✓</span><span data-sv="Anpassad rapportering" data-fi="Mukautettu raportointi"></span></li>
+        <li><span class="pricing-check">✓</span><span data-sv="Integration mot befintliga system" data-fi="Integraatio olemassaoleviin järjestelmiin"></span></li>
+        <li><span class="pricing-check">✓</span><span data-sv="SLA-avtal" data-fi="SLA-sopimus"></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section contact-section" id="kontakt">
+  <div class="contact-inner">
+    <div class="contact-copy">
+      <div class="section-label" data-sv="Kontakt" data-fi="Yhteystiedot"></div>
+      <h2 class="section-heading" data-sv="Redo att testa med er stad?" data-fi="Valmis kokeilemaan kuntanne kanssa?"></h2>
+      <p class="section-lead" data-sv="Vi sätter upp en testportal utan kostnad. Fyll i formuläret så återkommer vi inom en arbetsdag." data-fi="Perustamme testportaalin veloituksetta. Täytä lomake ja palaamme asiaan yhden työpäivän kuluessa."></p>
+      <div class="contact-detail">
+        <span class="contact-detail-label" data-sv="E-post" data-fi="Sähköposti"></span>
+        <a href="mailto:hej@kuntakeikka.fi">hej@kuntakeikka.fi</a>
+      </div>
+    </div>
+    <div class="contact-form-wrap">
+      <form class="contact-form" id="contact-form" onsubmit="submitContact(event)">
+        <div class="cf-row">
+          <div class="cf-field">
+            <label for="cf-name" data-sv="Ditt namn" data-fi="Nimesi"></label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name" />
+          </div>
+          <div class="cf-field">
+            <label for="cf-city" data-sv="Stad / Kommun" data-fi="Kaupunki / Kunta"></label>
+            <input type="text" id="cf-city" name="city" required />
+          </div>
+        </div>
+        <div class="cf-field">
+          <label for="cf-email" data-sv="Din e-post" data-fi="Sähköpostisi"></label>
+          <input type="email" id="cf-email" name="email" required autocomplete="email" />
+        </div>
+        <div class="cf-field">
+          <label for="cf-role" data-sv="Din roll" data-fi="Roolisi"></label>
+          <select id="cf-role" name="role">
+            <option value="" id="cf-role-placeholder"></option>
+            <option value="hr" id="cf-role-hr"></option>
+            <option value="it" id="cf-role-it"></option>
+            <option value="mgmt" id="cf-role-mgmt"></option>
+            <option value="other" id="cf-role-other"></option>
+          </select>
+        </div>
+        <div class="cf-field">
+          <label for="cf-msg" data-sv="Meddelande (valfritt)" data-fi="Viesti (valinnainen)"></label>
+          <textarea id="cf-msg" name="message" rows="3"></textarea>
+        </div>
+        <button type="submit" class="cf-submit" id="cf-submit">
+          <span id="cf-btn-text"></span>
+        </button>
+        <p class="cf-note" id="cf-note"></p>
+        <div id="cf-feedback" class="cf-feedback" style="display:none"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <img id="footer-logo" src="" alt="Kuntakeikka" style="height:28px;width:auto;opacity:0.6" />
+  <div class="footer-links">
+    <a href="#" data-sv="Integritetspolicy" data-fi="Tietosuojakäytäntö"></a>
+    <a href="#" data-sv="Användarvillkor" data-fi="Käyttöehdot"></a>
+    <a href="mailto:hej@kuntakeikka.fi">hej@kuntakeikka.fi</a>
+  </div>
+  <div class="footer-copy" data-sv="© 2026 Kuntakeikka. Levereras av Kuntakeikka." data-fi="© 2026 Kuntakeikka. Toimitettu Kuntakeikkan toimesta."></div>
+</footer>
+
+<script>
+var LOGO_SV = "https://vikariepool.vercel.app/kuntakeikka-logo-sv.png";
+var LOGO_FI = "https://vikariepool.vercel.app/kuntakeikka-logo-fi.png";
+var currentLang = 'sv';
+
+var i18n = {
+  sv: {
+    'nav-hur': 'Hur det fungerar',
+    'nav-pris': 'Priser',
+    'nav-cta': 'Kontakta oss',
+    'role-placeholder': 'Välj roll...',
+    'role-hr': 'HR / Personal',
+    'role-it': 'IT / Digitalisering',
+    'role-mgmt': 'Ledning / Chef',
+    'role-other': 'Annat',
+    'btn-send': 'Skicka — vi återkommer inom en dag',
+    'note': 'Ingen spam. Bara ett ärligt samtal om portalen passar er.',
+    'success': 'Tack! Vi återkommer inom en arbetsdag.',
+    'error-net': 'Nätverksfel. Försök igen.',
+    'sending': 'Skickar...',
+    'm-url': 'er-stad.kuntakeikka.fi',
+    'm-pool': 'Vikariepoolen',
+    'm-l1': 'Personuppgifter',
+    'm-l2': 'Tillgänglighet',
+    'm-fn': 'Förnamn',
+    'm-ln': 'Efternamn',
+    'm-em': 'E-post',
+  },
+  fi: {
+    'nav-hur': 'Miten se toimii',
+    'nav-pris': 'Hinnat',
+    'nav-cta': 'Ota yhteyttä',
+    'role-placeholder': 'Valitse rooli...',
+    'role-hr': 'HR / Henkilöstö',
+    'role-it': 'IT / Digitalisaatio',
+    'role-mgmt': 'Johto / Esimies',
+    'role-other': 'Muu',
+    'btn-send': 'Lähetä — palaamme päivän sisällä',
+    'note': 'Ei roskapostia. Vain rehellinen keskustelu siitä, sopiiko portaali teille.',
+    'success': 'Kiitos! Palaamme teille yhden työpäivän kuluessa.',
+    'error-net': 'Verkkovirhe. Yritä uudelleen.',
+    'sending': 'Lähetetään...',
+    'm-url': 'kuntanne.kuntakeikka.fi',
+    'm-pool': 'Sijaispooli',
+    'm-l1': 'Henkilötiedot',
+    'm-l2': 'Saatavuus',
+    'm-fn': 'Etunimi',
+    'm-ln': 'Sukunimi',
+    'm-em': 'Sähköposti',
+  }
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  var t = i18n[lang];
+  var logo = lang === 'fi' ? LOGO_FI : LOGO_SV;
+
+  document.querySelectorAll('.lang-btn').forEach(function(b) {
+    b.classList.toggle('active', b.textContent.toLowerCase() === lang);
+  });
+
+  ['nav-logo','hero-logo','footer-logo'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.src = logo;
+  });
+
+  document.querySelectorAll('[data-sv]').forEach(function(el) {
+    var val = el.getAttribute('data-' + lang);
+    if (!val) return;
+    if (el.tagName === 'H1') { el.innerHTML = val; }
+    else { el.textContent = val; }
+  });
+
+  // Mockup labels
+  document.getElementById('m-url').textContent = t['m-url'];
+  document.getElementById('m-pool-title').textContent = t['m-pool'];
+  document.getElementById('m-l1').textContent = t['m-l1'];
+  document.getElementById('m-l2').textContent = t['m-l2'];
+  document.getElementById('m-fn').textContent = t['m-fn'];
+  document.getElementById('m-ln').textContent = t['m-ln'];
+  document.getElementById('m-em').textContent = t['m-em'];
+
+  // Select options
+  document.getElementById('cf-role-placeholder').textContent = t['role-placeholder'];
+  document.getElementById('cf-role-hr').textContent = t['role-hr'];
+  document.getElementById('cf-role-it').textContent = t['role-it'];
+  document.getElementById('cf-role-mgmt').textContent = t['role-mgmt'];
+  document.getElementById('cf-role-other').textContent = t['role-other'];
+
+  document.getElementById('cf-btn-text').textContent = t['btn-send'];
+  document.getElementById('cf-note').textContent = t['note'];
+}
+
+function submitContact(e) {
+  e.preventDefault();
+  var btn = document.getElementById('cf-submit');
+  var fb = document.getElementById('cf-feedback');
+  var t = i18n[currentLang];
+  btn.disabled = true;
+  fb.style.display = 'none';
+  document.getElementById('cf-btn-text').textContent = t['sending'];
+
+  fetch('/api/contact', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      name:    document.getElementById('cf-name').value,
+      city:    document.getElementById('cf-city').value,
+      email:   document.getElementById('cf-email').value,
+      role:    document.getElementById('cf-role').value,
+      message: document.getElementById('cf-msg').value,
+    }),
+  })
+  .then(function(r) { return r.json().then(function(d) { return {ok:r.ok,data:d}; }); })
+  .then(function(res) {
+    if (res.ok) {
+      fb.className = 'cf-feedback success';
+      fb.textContent = t['success'];
+      document.getElementById('contact-form').reset();
+    } else {
+      fb.className = 'cf-feedback error';
+      fb.textContent = res.data.error || t['error-net'];
+    }
+    fb.style.display = 'block';
+    btn.disabled = false;
+    setLang(currentLang);
+  })
+  .catch(function() {
+    fb.className = 'cf-feedback error';
+    fb.textContent = t['error-net'];
+    fb.style.display = 'block';
+    btn.disabled = false;
+    setLang(currentLang);
+  });
+}
+
+setLang('sv');
+</script>
