@@ -813,7 +813,7 @@ function submitContact(e) {
   fb.style.display = 'none';
   document.getElementById('cf-btn-text').textContent = t['sending'];
 
-  fetch('/api/contact', {
+  fetch('https://vikariepool.vercel.app/api/contact', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify({
