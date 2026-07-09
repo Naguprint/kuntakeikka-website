@@ -450,6 +450,29 @@ code {
 .cf-feedback.success { background:#EAF8F5; color:#166B5A; border:1px solid #A8E0D0; }
 .cf-feedback.error { background:#FDE8EA; color:#B8202E; border:1px solid #F5B8BC; }
 
+/* Hero slider */
+.hero-slider {
+  margin: 0 0 1.5rem;
+  min-height: 2rem;
+}
+.hero-slide {
+  display: none;
+  font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--teal);
+  animation: fadeSlide 0.4s ease;
+}
+.hero-slide.active { display: block; }
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-slider-dots { display: flex; gap: 0.4rem; margin-top: 0.5rem; }
+.slider-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--border); cursor: pointer; transition: background 0.2s;
+}
+.slider-dot.active { background: var(--teal); }
+
 /* Hero quote */
 .hero-quote {
   margin: 0 0 2rem;
@@ -500,6 +523,16 @@ footer {
     </div>
     <h1 data-sv="Vikariepoolen som<br><span>en färdig tjänst</span>" data-fi="Sijaispooli<br><span>palveluna</span>"></h1>
     <p class="hero-sub" data-sv="Vikarier när kommunen behöver" data-fi="Sijaisia, kunta tarvitsee"></p>
+    <div class="hero-slider" id="hero-slider">
+      <div class="hero-slide active" data-sv="Enda tjänsten i Finland av sitt slag" data-fi="Ainoa tällainen palvelu Suomessa"></div>
+      <div class="hero-slide" data-sv="Nyckelfärdigt, bara att länka från kommunens hemsida" data-fi="Avaimet käteen -ratkaisu, linkitä vain kunnan verkkosivuilta"></div>
+      <div class="hero-slide" data-sv="Support 24/7 ingår" data-fi="Tuki 24/7 sisältyy hintaan"></div>
+      <div class="hero-slider-dots">
+        <span class="slider-dot active" onclick="goSlide(0)"></span>
+        <span class="slider-dot" onclick="goSlide(1)"></span>
+        <span class="slider-dot" onclick="goSlide(2)"></span>
+      </div>
+    </div>
     <p class="hero-lead" data-sv="Er stad får en egen portal där vikarierna registrerar sig, uppdaterar sin tillgänglighet och hanterar sitt konto — utan installation, utan IT-projekt." data-fi="Kuntanne saa oman portaalin, jossa sijaiset rekisteröityvät, päivittävät saatavuutensa ja hallinnoivat tiliään — ilman asennusta, ilman IT-projektia."></p>
     <blockquote class="hero-quote" data-sv="&ldquo;Vikariepoolen för små tvåspråkiga skärgårds- och landsbygdskommuner som vill behålla sin egen vikariepool men slippa telefonringandet — med svenska som fullvärdigt språk, egen subdomän och €490/mån utan upphandlingsbyråkrati.&rdquo;" data-fi="&ldquo;Sijaispooliyritys pienille kaksikielisille saaristo- ja maaseutukunnille, jotka haluavat pitää oman sijaispoolinsa mutta välttää jatkuvan soittelun — ruotsi täysivaltaisena kielenä, oma aliverkkotunnus ja 490 €/kk ilman hankintabyrokratiaa.&rdquo;"></blockquote>
     <div class="hero-actions">
@@ -581,7 +614,7 @@ footer {
     <div class="feature-card">
       <div class="feature-num">06</div>
       <h3 data-sv="Ingen installation" data-fi="Ei asennusta"></h3>
-      <p data-sv="Vi sätter upp er.kuntakeikka.fi och driftsätter. Ni behöver bara registrera en CNAME om ni vill ha egen domän." data-fi="Me perustamme kuntanne.kuntakeikka.fi ja käyttöönotamme. Tarvitsette vain CNAME-merkinnän, jos haluatte oman domainin."></p>
+      <p data-sv="Vi sätter upp er.kuntakeikka.fi och driftsätter — ni behöver inte göra något tekniskt." data-fi="Me perustamme kuntanne.kuntakeikka.fi ja käyttöönotamme — teidän ei tarvitse tehdä mitään teknistä."></p>
     </div>
   </div>
 </section>
@@ -756,7 +789,7 @@ footer {
     <a href="/integritetspolicy.html" data-sv="Integritetspolicy" data-fi="Tietosuojakäytäntö"></a>
     <a href="/anvandarvillkor.html" data-sv="Användarvillkor" data-fi="Käyttöehdot"></a>
   </div>
-  <div class="footer-copy" data-sv="© 2026 Kuntakeikka. Tjänsten tillhandahålls av Dan Strömberg (FO-nr 2243564-6). Vi är de enda i Finland som erbjuder en vikariepool som tjänst för tvåspråkiga kommuner." data-fi="© 2026 Kuntakeikka. Palvelun tarjoaa Dan Strömberg (Y-tunnus 2243564-6). Olemme ainoat Suomessa, jotka tarjoavat sijaispoolia palveluna kaksikielisille kunnille."></div>
+  <div class="footer-copy" data-sv="© 2026 Kuntakeikka. Tjänsten tillhandahålls av Dan Strömberg (FO-nr 2243564-6)." data-fi="© 2026 Kuntakeikka. Palvelun tarjoaa Dan Strömberg (Y-tunnus 2243564-6)."></div>
 </footer>
 
 <script>
@@ -896,4 +929,25 @@ function submitContact(e) {
 }
 
 setLang('sv');
+
+// Slider
+var sliderIndex = 0;
+var sliderTimer;
+
+function goSlide(n) {
+  var slides = document.querySelectorAll('.hero-slide');
+  var dots = document.querySelectorAll('.slider-dot');
+  slides[sliderIndex].classList.remove('active');
+  dots[sliderIndex].classList.remove('active');
+  sliderIndex = (n + slides.length) % slides.length;
+  slides[sliderIndex].classList.add('active');
+  dots[sliderIndex].classList.add('active');
+}
+
+function startSlider() {
+  clearInterval(sliderTimer);
+  sliderTimer = setInterval(function() { goSlide(sliderIndex + 1); }, 3500);
+}
+
+startSlider();
 </script>
