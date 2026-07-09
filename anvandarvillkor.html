@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Användarvillkor / Käyttöehdot — Kuntakeikka</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root {
+  --navy: #1B2F6E; --teal: #2AB5A0; --ink: #1B2F6E;
+  --ink2: #3A4F7A; --muted: #6B7FA8; --bg: #fff; --border: #D8E0F0;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--ink2); background: var(--bg); font-size: 16px; line-height: 1.7; }
+nav {
+  border-bottom: 1px solid var(--border); padding: 0 clamp(1.5rem,5vw,4rem);
+  height: 64px; display: flex; align-items: center; justify-content: space-between;
+}
+nav a { text-decoration: none; }
+nav img { height: 52px; width: auto; }
+.lang-toggle { display: flex; gap: 0.25rem; }
+.lang-btn {
+  background: transparent; border: 1px solid var(--border); color: var(--muted);
+  font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 4px;
+  cursor: pointer; font-family: inherit;
+}
+.lang-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+main { max-width: 760px; margin: 0 auto; padding: 3rem clamp(1.5rem,5vw,2rem) 5rem; }
+h1 { font-size: 1.9rem; font-weight: 800; color: var(--navy); margin-bottom: 0.4rem; letter-spacing: -0.02em; }
+.subtitle { font-size: 0.9rem; color: var(--muted); margin-bottom: 2.5rem; }
+h2 { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin: 2rem 0 0.6rem; }
+p { margin-bottom: 0.9rem; }
+ul { padding-left: 1.4rem; margin-bottom: 0.9rem; }
+li { margin-bottom: 0.35rem; }
+a { color: var(--teal); }
+.back { display: inline-block; margin-top: 3rem; font-size: 0.88rem; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--navy); }
+.hidden { display: none; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/"><img src="/kuntakeikka-logo-sv.png" id="nav-logo" alt="Kuntakeikka"></a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('sv')">SV</button>
+    <button class="lang-btn" onclick="setLang('fi')">FI</button>
+  </div>
+</nav>
+
+<main>
+  <!-- SVENSKA -->
+  <div id="content-sv">
+    <h1>Användarvillkor</h1>
+    <p class="subtitle">Gäller för kuntakeikka.fi — senast uppdaterad januari 2026</p>
+
+    <h2>1. Tjänsteleverantör</h2>
+    <p>Kuntakeikka tillhandahålls av Dan Strömberg, FO-nr 2243564-6 (nedan "vi" eller "leverantören").<br>
+    Kontakt: <a href="mailto:dan.stromberg@kuntakeikka.fi">dan.stromberg@kuntakeikka.fi</a></p>
+
+    <h2>2. Tjänstens beskrivning</h2>
+    <p>Kuntakeikka är en SaaS-tjänst (Software as a Service) som erbjuder finska kommuner en digital vikariepool — ett webbaserat system för registrering, administrering och kontakt med vikarier. Varje kundkommun får en egen portal på en dedikerad subdomän.</p>
+
+    <h2>3. Avtalsparter</h2>
+    <p>Dessa villkor gäller mellan leverantören och den kommun eller organisation (nedan "kunden") som ingår avtal om att använda Kuntakeikka. Enskilda vikarier som registrerar sig i kommunens pool är inte parter i detta avtal.</p>
+
+    <h2>4. Kundens ansvar</h2>
+    <ul>
+      <li>Kunden ansvarar för att använda tjänsten i enlighet med finsk lagstiftning, inklusive GDPR och dataskyddslagen.</li>
+      <li>Kunden är personuppgiftsansvarig för de vikariedata som samlas in via kommunens portal.</li>
+      <li>Kunden ansvarar för att informera vikarier om databehandlingen och inhämta nödvändiga samtycken.</li>
+      <li>Inloggningsuppgifter ska förvaras säkert och inte delas med obehöriga.</li>
+    </ul>
+
+    <h2>5. Leverantörens ansvar</h2>
+    <ul>
+      <li>Vi strävar efter en drifttid på minst 99 % per kalendermånad, exklusive planerat underhåll.</li>
+      <li>Vi behandlar vikariedata som personuppgiftsbiträde enligt ett separat biträdesavtal.</li>
+      <li>Vi förbehåller oss rätten att utföra underhåll med kort varsel vid kritiska säkerhetsuppdateringar.</li>
+    </ul>
+
+    <h2>6. Priser och betalning</h2>
+    <p>Månadsavgiften faktureras i förskott enligt överenskommelse. Priset för SMS-utskick debiteras separat enligt faktisk förbrukning. Vi förbehåller oss rätten att justera priser med 30 dagars skriftligt varsel.</p>
+
+    <h2>7. Avtalstid och uppsägning</h2>
+    <p>Avtalet löper tills vidare med en ömsesidig uppsägningstid om 30 dagar. Kunden kan begära export av all data innan avtalets utgång. Därefter raderas data inom 30 dagar.</p>
+
+    <h2>8. Ansvarsbegränsning</h2>
+    <p>Leverantörens totala ansvar är begränsat till det belopp kunden betalat under de tre senaste månaderna. Leverantören ansvarar inte för indirekta skador, utebliven vinst eller driftsavbrott orsakade av tredjepartsleverantörer (databas, e-post, SMS).</p>
+
+    <h2>9. Tillämplig lag</h2>
+    <p>Dessa villkor regleras av finsk lag. Eventuella tvister avgörs i Åbo tingsrätt.</p>
+
+    <a href="/" class="back">← Tillbaka till startsidan</a>
+  </div>
+
+  <!-- FINSKA -->
+  <div id="content-fi" class="hidden">
+    <h1>Käyttöehdot</h1>
+    <p class="subtitle">Koskee kuntakeikka.fi:tä — viimeksi päivitetty tammikuu 2026</p>
+
+    <h2>1. Palveluntarjoaja</h2>
+    <p>Kuntakeikkaa tarjoaa Dan Strömberg, Y-tunnus 2243564-6 (jäljempänä "me" tai "toimittaja").<br>
+    Yhteystiedot: <a href="mailto:dan.stromberg@kuntakeikka.fi">dan.stromberg@kuntakeikka.fi</a></p>
+
+    <h2>2. Palvelun kuvaus</h2>
+    <p>Kuntakeikka on SaaS-palvelu (Software as a Service), joka tarjoaa suomalaisille kunnille digitaalisen sijaispoolin — verkkopohjaisen järjestelmän sijaisten rekisteröintiin, hallintaan ja yhteydenpitoon. Jokainen asiakaskunta saa oman portaalin erillisellä aliverkkotunnuksella.</p>
+
+    <h2>3. Sopimusosapuolet</h2>
+    <p>Nämä ehdot koskevat toimittajan ja Kuntakeikkaa käyttävän kunnan tai organisaation (jäljempänä "asiakas") välistä suhdetta. Kunnan sijaispoolin rekisteröityneet sijaiset eivät ole tämän sopimuksen osapuolia.</p>
+
+    <h2>4. Asiakkaan vastuu</h2>
+    <ul>
+      <li>Asiakas vastaa palvelun käyttämisestä Suomen lainsäädännön, mukaan lukien GDPR:n ja tietosuojalain, mukaisesti.</li>
+      <li>Asiakas on rekisterinpitäjä kunnan portaalin kautta kerättävien sijaistietojen osalta.</li>
+      <li>Asiakas vastaa sijaisten tiedottamisesta tietojenkäsittelystä ja tarvittavien suostumusten hankkimisesta.</li>
+      <li>Kirjautumistiedot on säilytettävä turvallisesti eikä niitä saa jakaa luvattomille henkilöille.</li>
+    </ul>
+
+    <h2>5. Toimittajan vastuu</h2>
+    <ul>
+      <li>Pyrimme vähintään 99 prosentin käyttöaikaan kalenterikuukausittain, pois lukien suunniteltu huolto.</li>
+      <li>Käsittelemme sijaistietoja henkilötietojen käsittelijänä erillisen käsittelysopimuksen mukaisesti.</li>
+      <li>Pidätämme oikeuden suorittaa huoltotoimenpiteitä lyhyellä varoitusajalla kriittisten tietoturvapäivitysten yhteydessä.</li>
+    </ul>
+
+    <h2>6. Hinnat ja maksaminen</h2>
+    <p>Kuukausimaksu laskutetaan etukäteen sopimuksen mukaisesti. SMS-viestien kustannukset laskutetaan erikseen todellisen käytön mukaan. Pidätämme oikeuden tarkistaa hintoja 30 päivän kirjallisella ilmoituksella.</p>
+
+    <h2>7. Sopimusaika ja irtisanominen</h2>
+    <p>Sopimus on voimassa toistaiseksi 30 päivän molemminpuolisella irtisanomisajalla. Asiakas voi pyytää kaikkien tietojen vientiä ennen sopimuksen päättymistä. Tiedot poistetaan 30 päivän kuluessa sopimuksen päättymisestä.</p>
+
+    <h2>8. Vastuunrajoitus</h2>
+    <p>Toimittajan kokonaisvastuu rajoittuu asiakkaan kolmen viimeisen kuukauden aikana maksamaan summaan. Toimittaja ei vastaa välillisistä vahingoista, saamatta jääneestä voitosta tai kolmansien osapuolten palveluntarjoajien (tietokanta, sähköposti, SMS) aiheuttamista käyttökatkoista.</p>
+
+    <h2>9. Sovellettava laki</h2>
+    <p>Näihin ehtoihin sovelletaan Suomen lakia. Mahdolliset riidat ratkaistaan Turun käräjäoikeudessa.</p>
+
+    <a href="/" class="back">← Takaisin etusivulle</a>
+  </div>
+</main>
+
+<script>
+function setLang(lang) {
+  document.getElementById('content-sv').classList.toggle('hidden', lang !== 'sv');
+  document.getElementById('content-fi').classList.toggle('hidden', lang !== 'fi');
+  document.getElementById('nav-logo').src = lang === 'fi' ? '/kuntakeikka-logo-fi.png' : '/kuntakeikka-logo-sv.png';
+  document.querySelectorAll('.lang-btn').forEach(function(b) {
+    b.classList.toggle('active', b.textContent.toLowerCase() === lang);
+  });
+}
+</script>
+</body>
+</html>
