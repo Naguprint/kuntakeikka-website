@@ -1,4 +1,41 @@
-<title>Kuntakeikka — Vikarier när kommunen behöver</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kuntakeikka — Vikariepool för kommuner i Finland</title>
+<meta name="description" content="Kuntakeikka hjälper finska kommuner att bygga och hantera sin egen vikariepool digitalt. Snabb rekrytering, GDPR-säkert och tvåspråkigt.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://kuntakeikka.fi/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kuntakeikka.fi/">
+<meta property="og:title" content="Kuntakeikka — Vikariepool för kommuner i Finland">
+<meta property="og:description" content="Kuntakeikka hjälper finska kommuner att bygga och hantera sin egen vikariepool digitalt. Snabb rekrytering, GDPR-säkert och tvåspråkigt.">
+<meta property="og:locale" content="sv_FI">
+<meta property="og:locale:alternate" content="fi_FI">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kuntakeikka — Vikariepool för kommuner i Finland">
+<meta name="twitter:description" content="Kuntakeikka hjälper finska kommuner att bygga och hantera sin egen vikariepool digitalt.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Kuntakeikka",
+  "url": "https://kuntakeikka.fi",
+  "description": "Digital vikariepool för finska kommuner. Kommuner kan bygga upp, hantera och kontakta sin pool av vikarier via SMS och e-post.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" },
+  "provider": {
+    "@type": "Organization",
+    "name": "Kuntakeikka",
+    "url": "https://kuntakeikka.fi"
+  },
+  "areaServed": { "@type": "Country", "name": "Finland" },
+  "inLanguage": ["sv", "fi"]
+}
+</script>
+
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -413,6 +450,19 @@ code {
 .cf-feedback.success { background:#EAF8F5; color:#166B5A; border:1px solid #A8E0D0; }
 .cf-feedback.error { background:#FDE8EA; color:#B8202E; border:1px solid #F5B8BC; }
 
+/* Hero quote */
+.hero-quote {
+  margin: 0 0 2rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--teal);
+  background: var(--teal-bg);
+  color: var(--ink2);
+  font-size: 0.97rem;
+  line-height: 1.7;
+  font-style: italic;
+  border-radius: 0 6px 6px 0;
+}
+
 /* Footer */
 footer {
   background:var(--bg); border-top:1px solid var(--border);
@@ -451,6 +501,7 @@ footer {
     <h1 data-sv="Vikariepoolen som<br><span>en färdig tjänst</span>" data-fi="Sijaispooli<br><span>palveluna</span>"></h1>
     <p class="hero-sub" data-sv="Vikarier när kommunen behöver" data-fi="Sijaisia, kunta tarvitsee"></p>
     <p class="hero-lead" data-sv="Er stad får en egen portal där vikarierna registrerar sig, uppdaterar sin tillgänglighet och hanterar sitt konto — utan installation, utan IT-projekt." data-fi="Kuntanne saa oman portaalin, jossa sijaiset rekisteröityvät, päivittävät saatavuutensa ja hallinnoivat tiliään — ilman asennusta, ilman IT-projektia."></p>
+    <blockquote class="hero-quote" data-sv="&ldquo;Vikariepoolen för små tvåspråkiga skärgårds- och landsbygdskommuner som vill behålla sin egen vikariepool men slippa telefonringandet — med svenska som fullvärdigt språk, egen subdomän och €490/mån utan upphandlingsbyråkrati.&rdquo;" data-fi="&ldquo;Sijaispooliyritys pienille kaksikielisille saaristo- ja maaseutukunnille, jotka haluavat pitää oman sijaispoolinsa mutta välttää jatkuvan soittelun — ruotsi täysivaltaisena kielenä, oma aliverkkotunnus ja 490 €/kk ilman hankintabyrokratiaa.&rdquo;"></blockquote>
     <div class="hero-actions">
       <a class="btn-primary" href="#kontakt" data-sv="Boka en demo" data-fi="Varaa esittely"></a>
       <a class="btn-demo" href="https://pargas.kuntakeikka.fi" target="_blank" rel="noopener" data-sv="Se live-demo →" data-fi="Katso live-demo →"></a>
@@ -702,10 +753,10 @@ footer {
 <footer>
   <img id="footer-logo" src="" alt="Kuntakeikka" style="height:44px;width:auto;" />
   <div class="footer-links">
-    <a href="#" data-sv="Integritetspolicy" data-fi="Tietosuojakäytäntö"></a>
-    <a href="#" data-sv="Användarvillkor" data-fi="Käyttöehdot"></a>
+    <a href="/integritetspolicy.html" data-sv="Integritetspolicy" data-fi="Tietosuojakäytäntö"></a>
+    <a href="/anvandarvillkor.html" data-sv="Användarvillkor" data-fi="Käyttöehdot"></a>
   </div>
-  <div class="footer-copy" data-sv="© 2026 Kuntakeikka. Kuntakeikka.fi drivs av Naguprint." data-fi="© 2026 Kuntakeikka. Kuntakeikka.fi:tä hallinnoi Naguprint."></div>
+  <div class="footer-copy" data-sv="© 2026 Kuntakeikka. Tjänsten tillhandahålls av Dan Strömberg (FO-nr 2243564-6). Vi är de enda i Finland som erbjuder en vikariepool som tjänst för tvåspråkiga kommuner." data-fi="© 2026 Kuntakeikka. Palvelun tarjoaa Dan Strömberg (Y-tunnus 2243564-6). Olemme ainoat Suomessa, jotka tarjoavat sijaispoolia palveluna kaksikielisille kunnille."></div>
 </footer>
 
 <script>
@@ -777,7 +828,7 @@ function setLang(lang) {
   document.querySelectorAll('[data-sv]').forEach(function(el) {
     var val = el.getAttribute('data-' + lang);
     if (!val) return;
-    if (el.tagName === 'H1') { el.innerHTML = val; }
+    if (el.tagName === 'H1' || el.tagName === 'BLOCKQUOTE') { el.innerHTML = val; }
     else { el.textContent = val; }
   });
 
